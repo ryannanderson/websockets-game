@@ -1,0 +1,98 @@
+body {
+  background: rgb(63, 63, 63);
+  font-family: sans-serif;
+  text-align: center;
+  color: white;
+}
+
+
+#game {
+  display: grid;
+  grid-auto-rows: minmax(0px, auto);
+  grid-template-columns: minmax(0px, 1fr) repeat(6, minmax(0, 175px)) minmax(
+    0px,
+    1fr
+    );
+  }
+  
+  
+  h1{
+    grid-row: 1 / 2;
+    grid-column: 4 / 6;
+  }
+.square {
+  position: absolute;
+  left: 10px;
+  top: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: #4858e5;
+}
+
+.col {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+
+.select-player {
+  grid-row: 2 / 3;
+  grid-column: 4 / 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.start-button {
+  margin-top: 10px;
+  width: 10em;
+}
+
+.player1 {
+  height: 500px;
+  width: 100%;
+  background-color: lightblue;
+  grid-row: 4 / 5;
+  grid-column: 1 / 5;
+  position: relative;
+}
+
+.player2 {
+  height: 500px;
+  width: 100%;
+  background-color: lightyellow;
+  grid-row: 4 / 5;
+  grid-column: 5 / -1;
+  position: relative;
+}
+
+.score-flex {
+  grid-row: 3 / 4;
+  grid-column: 4 / 6;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 1.5em;
+}
+
+.only-players-flex {
+  grid-row: 6 / 7;
+  grid-column: 3 / 7;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.winner {
+  height: 500px;
+  width: 100%;
+  grid-row: 4 / 5;
+  grid-column: 3 / 7;
+  background-color: rgb(146, 146, 146);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+}

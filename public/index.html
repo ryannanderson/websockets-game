@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Web Sockets Game</title>
+  </head>
+  <body>
+    <div id="game">
+      
+      <div class="select-player" v-if="playerSelection">
+        <!-- <h2>SELECT A PLAYER</h2>
+        <div>
+          <button v-if="choosePlayer1" @click="playerOneButton">player1</button>
+          <button v-if="player1Disabled" disabled>player1</button>
+          <button v-if="choosePlayer2" @click="playerTwoButton">player2</button>
+          <button v-if="player2Disabled" disabled>player2</button>
+        </div> -->
+        <button @click="startGame" class="start-button">START</button>
+        <div v-if="pleaseSelectPlayers">SELECT PLAYERS TO START THE GAME</div>
+      </div>
+      <h1 @click="play()">Web Sockets game</h1>
+      <div class="player1" v-if="playerOneBoard">
+        <div v-for="(box, index) in boxes" :style="{ left: box.x+'px', top:box.y+'px', width: box.size + 'px', height: box.size + 'px', backgroundColor: box.color }" class="square" @click="playerOne()">
+        <div @click="removeBox(index)" :style="{ left: box.x+'px', top:box.y+'px', width: box.size + 'px', height: box.size + 'px', backgroundColor: box.color }"></div>
+        </div>
+        
+      </div>
+      <div class="player2" v-if="playerTwoBoard">
+        <div v-for="(boxTwo, index) in boxesTwo" :style="{ left: boxTwo.x+'px', top:boxTwo.y+'px', width: boxTwo.size + 'px', height: boxTwo.size + 'px', backgroundColor: boxTwo.color }" class="square" @click="playerTwo()">
+          <div @click="removeBoxTwo(index)" :style="{ left: boxTwo.x+'px', top:boxTwo.y+'px', width: boxTwo.size + 'px', height: boxTwo.size + 'px', backgroundColor: boxTwo.color }"></div>
+        </div>
+        
+      </div>
+      <div class="only-players-flex" v-if="onlyPlayerOne || onlyPlayerTwo">
+        <div v-if="onlyPlayerOne">ONLY PLAYER ONE CAN PLAY HERE</div>
+        <div v-if="onlyPlayerTwo">ONLY PLAYER TWO CAN PLAY HERE</div>
+      </div>
+      <div class="score-flex" v-if="scoreBoard">
+
+        <div v-if="playerOneScoreCard">
+          <div>P1: {{ pOneScore }}</div>
+        </div>
+        
+        <div v-if="playerTwoScoreCard">
+          <div>P2: {{ pTwoScore }}</div>
+        </div>
+        
+      </div>
+      <div v-if="winTwo" class="winner" >you win, player two!
+       <!--  <button @click="playAgain()">PLAY AGAIN</button> -->
+      </div>
+      <div v-if="win" class="winner">you win, player one!
+        <!-- <button @click="playAgain()">PLAY AGAIN</button> -->
+      </div>
+    </div>
+   <!--  <div id="clock">
+      <p class="time">{{ time }}</p>
+    </div> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
